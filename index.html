@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="aside">
+            <div class="logo">
+                <a href="#"><span>CV</span> Logo</a>
+            </div>
+            <ul class="nav">
+                <li><a href="#" class="active" onclick="showSection('home')"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#" onclick="showSection('about')"><i class="fa fa-user"></i> About</a></li>
+                <li><a href="#" onclick="showSection('education')"><i class="fa fa-graduation-cap"></i> Education</a></li>
+                <li><a href="#" onclick="showSection('experience')"><i class="fa fa-briefcase"></i> Work Experience</a></li>
+                <li><a href="#" onclick="showSection('skills')"><i class="fa fa-list"></i> Skills</a></li>
+                <li><a href="#" onclick="showSection('projects')"><i class="fa fa-cogs"></i> Projects</a></li>
+                <li><a href="#" onclick="showSection('contact')"><i class="fa fa-comments"></i> Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <section id="home" class="section active">
+                <h2>Welcome to My CV</h2>
+                <p>This is an introduction to my curriculum vitae.</p>
+            </section>
+
+            <section id="about" class="section hidden">
+                <h2>About Me</h2>
+                <p>Name: Siyabonga Tshabalala</p>
+                <p>Contact: 240093356@keyaka.ul.ac.za</p>
+                <p>Short Bio: I am a computer science student in my first year of university and i am a striving developer</p>
+                <div class="edit-section hidden">
+                    <h3>Edit About Me</h3>
+                    <input type="text" id="aboutName" placeholder="Your Name" />
+                    <input type="text" id="aboutEmail" placeholder="Your Email" />
+                    <textarea id="aboutBio" placeholder="Your Short Bio"></textarea>
+                    <button onclick="saveAbout()">Save</button>
+                </div>
+                <button onclick="toggleEdit('about')">Edit</button>
+            </section>
+
+            <section id="education" class="section hidden">
+                <h2>Education</h2>
+                <p>Degree: BSC in mathematical and computer science</p>
+                <p>Institution:University of limpopo</p>
+                <p>Year: 2026</p>
+                <div class="edit-section hidden">
+                    <h3>Edit Education</h3>
+                    <input type="text" id="educationDegree" placeholder="Degree" />
+                    <input type="text" id="educationInstitution" placeholder="Institution" />
+                    <input type="text" id="educationYear" placeholder="Year" />
+                    <button onclick="saveEducation()">Save</button>
+                </div>
+                <button onclick="toggleEdit('education')">Edit</button>
+            </section>
+
+            <section id="experience" class="section hidden">
+                <h2>Work Experience</h2>
+                <p>Job Title: Teacher assistant</p>
+                <p>Company: Landulwazi Comprehensive school</p>
+                <p>Duration:15 Feb 2021 - 20 Oct 2023</p>
+                <div class="edit-section hidden">
+                    <h3>Edit Work Experience</h3>
+                    <input type="text" id="experienceJobTitle" placeholder="Job Title" />
+                    <input type="text" id="experienceCompany" placeholder="Company" />
+                    <input type="text" id="experienceDuration" placeholder="Duration" />
+                    <button onclick="saveExperience()">Save</button>
+                </div>
+                <button onclick="toggleEdit('experience')">Edit</button>
+            </section>
+            
+            <section id="skills" class="section hidden">
+                <h2>Skills</h2>
+                <ul id="skillsList">
+                    <li>Coding</li>
+                    <li>Time management</li>
+                    <li>Communication skills</li>
+                </ul>
+                <div class="edit-section hidden">
+                    <h3>Edit Skills</h3>
+                    <input type="text" id="newSkill" placeholder="New Skill" />
+                    <button onclick="addSkill()">Add Skill</button>
+                </div>
+                <button onclick="toggleEdit('skills')">Edit</button>
+            </section>
+
+            <section id="projects" class="section hidden">
+                <h2>Projects</h2>
+                <p>Project Title: Library management</p>
+                <p>Description:Using c++ programing with help from my group memebers i was able to create a library management system though its not perfect</p>
+                <div class="edit-section hidden">
+                    <h3>Edit Projects</h3>
+                    <input type="text" id="projectTitle" placeholder="Project Title" />
+                    <textarea id="projectDescription" placeholder="Project Description"></textarea>
+                    <button onclick="saveProject()">Save</button>
+                </div>
+                <button onclick="toggleEdit('projects')">Edit</button>
+            </section>
+            
+
+            <section id="contact" class="section hidden">
+                <h2>Contact Me</h2>
+                <form id="contactForm">
+                    <input type="text" placeholder="Your Name" required />
+                    <input type="email" placeholder="Your Email" required />
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

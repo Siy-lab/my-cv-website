@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-black-900: #f2f2fc;
+    --bg-black-100: #fdf9ff;
+    --bg-blue: #007BFF; /* Add a blue color for active states */
+    --text-black-900: #302e4d;
+    --text-dark: #504e70;
+}
+
+body {
+    line-height: 1.5;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.main-container {
+    display: flex;
+}
+
+.aside {
+    width: 260px;
+    background: var(--bg-black-100);
+    padding: 30px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 10;
+}
+
+.aside .logo {
+    font-size: 30px;
+    text-transform: capitalize;
+    margin-bottom: 50px;
+}
+
+.aside .logo a {
+    color: var(--text-black-900);
+    font-weight: 700;
+    letter-spacing: 5px;
+}
+
+.nav {
+    width: 100%;
+}
+
+.nav a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--text-black-900);
+    transition: background 0.3s;
+}
+
+.nav a:hover, .nav a.active {
+    background: var(--bg-blue);
+    color: white;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background: var(--bg-black-900);
+}
+
+.section {
+    display: none; /* Hide all sections by default */
+}
+
+.section.active {
+    display: block; /* Show active section */
+}
+
+.hidden {
+    display: none; /* Hide elements with this class */
+}
+
+.edit-section {
+    margin-top: 20px;
+    background: var(--bg-black-50);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.edit-section input, .edit-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--text-dark);
+    border-radius: 5px;
+}
+
+.edit-section button {
+    background: var(--bg-blue);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-section button:hover {
+    opacity: 0.8;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input, form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--text-dark);
+    border-radius: 5px;
+}
+
+form button {
+    background: var(--bg-blue);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    opacity: 0.8;
+}

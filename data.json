@@ -1,0 +1,21 @@
+{
+    "name": "Your Name",
+    "contact": "your.email@example.com",
+    "bio": "A brief bio about yourself.",
+    "education": [
+        {
+            "degree": "B.Sc. in Computer Science",
+            "institution": "University Name",
+            "year": 2023
+        }
+    ],
+    "workExperience": [
+        {
+            "jobTitle": "Software Developer",
+            "company": "Company Name",
+            "year": 2023
+        }
+    ],
+    "skills": ["JavaScript", "Node.js", "Express", "React"],
+    "projects": ["Project 1", "Project 2"]
+}
