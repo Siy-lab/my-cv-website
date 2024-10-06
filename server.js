@@ -13,9 +13,9 @@ const defaultCVData = {
     bio: "I am a computer science student in my first year of university and I am a striving developer.",
     education: [
         {
-            degree: "N/A",
-            institution: "N/A",
-            year: "N/A"
+            degree: "Bsc in mathematical and computer science",
+            institution: "University of limpopo",
+            year: "2024"
         }
     ],
     experience: [
