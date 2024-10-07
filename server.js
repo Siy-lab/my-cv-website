@@ -4,17 +4,17 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
 const app = express();
-const PORT = process.env.PORT || 1433;
+const PORT = process.env.PORT || 1433; // Vercel assigns PORT automatically
 
 app.use(cors());
 app.use(bodyParser.json());
 
-// Create a MySQL connection
+// Create a MySQL connection with environment variables
 const db = mysql.createConnection({
-    host: 'localhost',          // The MySQL server (use 'localhost' for local dev)
-    user: 'root',               // Your MySQL username
-    password: 's1y@@',               // Your MySQL password (leave blank if none)
-    database: 'my_cv_database'  // The name of your database
+    host: process.env.DB_HOST,         // MySQL host from environment variables
+    user: process.env.DB_USER,         // MySQL username from environment variables
+    password: process.env.DB_PASSWORD, // MySQL password from environment variables
+    database: process.env.DB_NAME      // MySQL database name from environment variables
 });
 
 // Connect to the database
@@ -50,7 +50,7 @@ app.get('/api/cv', (req, res) => {
             bio: personalInfo[0]?.bio || 'N/A',
             education: education,
             experience: experience,
-            skills: skills.map(skill => skill.skill_name), // Assuming you have a column named 'skill_name'
+            skills: skills.map(skill => skill.skill_name), // Assuming column 'skill_name'
             projects: projects
         };
         res.json(cvData);
@@ -61,12 +61,11 @@ app.get('/api/cv', (req, res) => {
 app.post('/api/cv', (req, res) => {
     const newData = req.body;
 
-    // Update each field if present in the newData
-    // Example for updating personal info
+    // Update personal info
     if (newData.name || newData.contact || newData.bio) {
         const { name, contact, bio } = newData;
-        const query = 'UPDATE personal_info SET name = ?, contact = ?, bio = ? WHERE id = ?'; // Assuming you have a unique ID
-        db.query(query, [name, contact, bio, 1], (err) => { // Update for the first entry
+        const query = 'UPDATE personal_info SET name = ?, contact = ?, bio = ? WHERE id = ?';
+        db.query(query, [name, contact, bio, 1], (err) => {
             if (err) {
                 console.error('Error updating personal info:', err.message);
                 res.status(500).send('Server error');
@@ -75,11 +74,10 @@ app.post('/api/cv', (req, res) => {
         });
     }
 
-    // Implement similar logic for education, experience, skills, and projects
-    // Example for updating education
+    // Update education (as an example)
     if (newData.education) {
-        const educationQuery = 'UPDATE education SET degree = ?, institution = ?, year = ? WHERE id = ?'; // Assuming you have a unique ID
-        db.query(educationQuery, [newData.education[0].degree, newData.education[0].institution, newData.education[0].year, 1], (err) => { // Update for the first entry
+        const educationQuery = 'UPDATE education SET degree = ?, institution = ?, year = ? WHERE id = ?';
+        db.query(educationQuery, [newData.education[0].degree, newData.education[0].institution, newData.education[0].year, 1], (err) => {
             if (err) {
                 console.error('Error updating education:', err.message);
                 res.status(500).send('Server error');
@@ -87,8 +85,6 @@ app.post('/api/cv', (req, res) => {
             }
         });
     }
-
-    // Handle other fields like experience, skills, and projects similarly...
 
     res.json({ message: 'CV data updated successfully!' });
 });
